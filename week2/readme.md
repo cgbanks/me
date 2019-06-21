@@ -20,3 +20,10 @@ EXERCISE 2:
 
 Go through line by line, find issues and fix.
 
+EXERCISE 3:
+
+if statements need :
+return needs to be at the end, must return something
+
+If you have an finish with the same outcome/different from others, make it else
+
