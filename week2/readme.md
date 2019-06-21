@@ -6,11 +6,17 @@ Can't run tests, don't know what issue is
 
 Very little direction
 
+EXERCISE 1:
+
 str.upper?
 
 a_string.upper()?s
 
 a_string is already defined in exercise 0
 
-recall shout, as previous def
+Recall shout, as previous def
+
+EXERCISE 2:
+
+Go through line by line, find issues and fix.
 

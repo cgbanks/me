@@ -9,13 +9,13 @@ linter with no errors or warnings!
 import string
 
 def getLetter(index):
-    alphabet = str.ascii_lowercase + " "
-    return alphabet(index)
+    alphabet = string.ascii_lowercase + " "
+    return alphabet[index]
 
 
-def week2exersise2(index):
+def week2exersise2():
     indices = [12, 2, 26, 7, 0, 12, 12, 4, 17]
-    wordArray = map(getLetter, indices)
+    wordArray = list(map(getLetter, indices))
     wordArray[0] = wordArray[0].upper()
     wordArray[1] = wordArray[1].upper()
     wordArray[3] = wordArray[3].upper()
