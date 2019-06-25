@@ -46,8 +46,9 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-    for list(range(loops_1a))
-    return answer
+    a_list = []
+    for a_list in range(0,9)
+    a_list.append
 
 
 
