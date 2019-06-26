@@ -46,9 +46,12 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
+    star = []
     for i in range(10):
-        print('*', end=', ')
-loops_1a()        
+        star.append('*')
+
+    print(star)
+    return star
 
 def loops_1c(number_of_items=5, symbol="#"):
     """Respond to variables.
@@ -57,9 +60,12 @@ def loops_1c(number_of_items=5, symbol="#"):
     string with exacly one symbol in it.
     E.g.: ['#', '#', '#', '#', '#']
     """
+    hash = []
     for i in range(5):
-        print('#', end=', ')
+        hash.append('#')
 
+    print(hash)
+    return hash
 
 def loops_2():
     """Make a big square starfield.
@@ -174,6 +180,7 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
+    
     return None
 
 
