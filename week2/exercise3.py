@@ -48,7 +48,7 @@ def loops_1a():
     """
     for i in range(10):
         print('*', end=', ')
-
+loops_1a()        
 
 def loops_1c(number_of_items=5, symbol="#"):
     """Respond to variables.
@@ -79,7 +79,8 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
-    return None
+
+    return 
 
 
 def loops_3():
