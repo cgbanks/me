@@ -26,7 +26,41 @@ def advancedGuessingGame():
     purpose if you can!
     """
 
-    return "You got it!"
+    def randomgame():
+
+      print('Welcome to the guessing game!')
+      print('Pick the bounds')
+      lower = input('Enter a lower bound : ')
+      upper = input('Enter a upper bound : ')
+      if lower or upper != int:
+        print('Interger only')
+      else:
+        print('Ok, you have chosen {lower} and {upper} as your bounds, guess a number'.format(lower, upper)
+      lower = int(lower)
+      upper = int(upper)
+
+      actualNumber = random.randint(lower, upper)
+
+      guessed = False
+
+      while not guessed:
+        guessed_number = int(input('Number guess : '))
+        print('You have guessed {}').format(guessed_number)
+        if guessed_number == actualNumber:
+          print('Well done! That is it!')
+          guessed = True
+        elif guessed_number > upper or guessed_number < lower:
+          print('You fool! Know your bounds')
+          guessed = False
+        elif guessed_number > actualNumber:
+          print ('Too high!')
+          guessed = False
+        else guessed_number < actualNumber:
+          print ('Too low!')
+          guessed = False
+        
+      return "You got it!"
+
     # the tests are looking for the exact string "You got it!". Don't modify that!
 
 
