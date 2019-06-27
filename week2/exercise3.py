@@ -50,7 +50,6 @@ def loops_1a():
     for i in range(10):
         star.append('*')
 
-    print(star)
     return star
 
 def loops_1c(number_of_items=5, symbol="#"):
@@ -64,7 +63,6 @@ def loops_1c(number_of_items=5, symbol="#"):
     for i in range(5):
         hash.append('#')
 
-    print(hash)
     return hash
 
 def loops_2():
@@ -85,8 +83,14 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
+    star_square = []
+    for j in range(10):
+        star = []
+        for i in range(10):
+            star.append('*')
+        star_square.append(star)
 
-    return 
+    return star_square
 
 
 def loops_3():
@@ -110,7 +114,14 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    return None
+    num = []
+    for i in range(10):
+        num_list = []
+        for j in range(10):
+            num_list.append(i)
+        num.append(num_list)        
+    
+    return num
 
 
 def loops_4():
@@ -130,7 +141,14 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    return None
+    num = []
+    for i in range(10):
+        num_list = []
+        for j in range(10):
+            num_list.append(j)
+        num.append(num_list)
+
+    return num
 
 
 def loops_5():
@@ -157,8 +175,15 @@ def loops_5():
         "There are {} green bottles".format(8)
     you'll come to see the pros and cons of each over time.
     """
-    return None
+    num = []
+    for i in range(10):
+        other = []
+        for j in range(5):
+            other.append('(i' + str(i) + ', j' + str(j) + ')')
+        num.append(other)
 
+    return num
+    
 
 def loops_6():
     """Make a wedge of numbers.
@@ -180,8 +205,14 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    
-    return None
+    num = []
+    for i in range(10):
+        num_other = []
+        for j in range(i+1):
+            num_other.append(j)
+        num.append(num_other)
+        
+    return num
 
 
 def loops_7():
@@ -205,17 +236,7 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    pyramidList = []
-    height = 5
-    for y in range(height):
-        tempLine = []
-        for x in range(height*2-1):
-            if x >= height - 1 - y and x <= height + y - 1:
-                tempLine.append('*')
-            else:
-                tempLine.append(' ')
-        pyramidList.append(tempLine)
-    return pyramidList
+    
 
 
 def lp(some_kind_of_list, exercise_name):
