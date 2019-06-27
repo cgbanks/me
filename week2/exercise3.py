@@ -208,7 +208,7 @@ def loops_6():
     num = []
     for i in range(10):
         num_other = []
-        for j in range(i+1):
+        for j in range(i + 1):
             num_other.append(j)
         num.append(num_other)
         
@@ -236,6 +236,18 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
+
+    stack = []
+    for i in range(5):
+        row = []
+        for j in range(9):
+            if j < (4 - i) or j > (4 + i):
+                row.append(" ")
+            else:
+                row.append("*")
+        stack.append(row)
+
+    return stack
     
 
 
