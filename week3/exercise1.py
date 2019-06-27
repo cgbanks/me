@@ -12,8 +12,9 @@ def loop_ranger(start, stop=None, step=1):
     The look up the docs for range(), you can answer this with just the range 
     function, but we'd like you to do it the long way, probably using a loop.
     """
-    
+    ranger = []
     for i in range(start, stop, step):
+        ranger.append(i)
     
     return ranger
 
@@ -53,7 +54,9 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    return None
+
+    while True
+        if input = int
 
 
 def super_asker(low, high):
