@@ -34,6 +34,7 @@ def two_step_ranger(start, stop):
     Sometimes you want to hide complexity.
     Make a range function that always has a step size of 2
     """
+
     return range(start, stop, 2)
 
 
@@ -65,11 +66,9 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    number = 'Enter a number:'
-
     while True:
         try:
-            input_num = int(input(number))
+            input_num = int(input('Enter a number:'))
             print('{} works, well done!'.format(input_num))
             return input_num
         except:

@@ -32,20 +32,24 @@ def advancedGuessingGame():
       print('Pick the bounds')
       lower = input('Enter a lower bound : ')
       upper = input('Enter a upper bound : ')
+      lower = int(lower)
+      upper = int(upper)
       if lower or upper != int:
         print('Interger only')
       else:
         print('Ok, you have chosen {lower} and {upper} as your bounds, guess a number'.format(lower, upper)
-      lower = int(lower)
-      upper = int(upper)
 
-      actualNumber = random.randint(lower, upper)
+         # lower = int(lower)
+         # upper = int(upper)
 
-      guessed = False
+      #actualNumber = random.randint(lower, upper)
+
+      #guessed = False
 
       while not guessed:
         guessed_number = int(input('Number guess : '))
         print('You have guessed {}').format(guessed_number)
+        actualNumber = random.randint(lower, upper)
         if guessed_number == actualNumber:
           print('Well done! That is it!')
           guessed = True
