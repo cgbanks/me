@@ -90,9 +90,23 @@ def super_asker(low, high):
     amount of code.
     """
 
-    number = 'Number needed'
+    number = 'Enter a number between {low} and {high}'.format(low=low, high=high)
 
-    return None
+    while True:
+        try: 
+            input_num = int(input('Enter a number:'))
+            print('{} works, well done!'.format(input_num))
+        except:
+            print('Intergers only')
+
+    while True:
+        input_num = int(input(number))
+        if low < input_num < high:
+            print('Cool, {} works'.format(input_num))
+            return input_num
+        else:
+            print('{input} is not between {low} and {high}'.format(input=input, low=low, high=high))
+    
 
 
 if __name__ == "__main__":
