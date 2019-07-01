@@ -90,25 +90,18 @@ def super_asker(low, high):
     amount of code.
     """
 
-    number = 'Enter a number between {low} and {high}'.format(low=low, high=high)
+    input_number = input('Enter a number')
+    num = not_number_rejector(input_number)
 
-    while True:
-        try: 
-            input_num = int(input('Enter a number:'))
-            print('{} works, well done!'.format(input_num))
-        except:
-            print('Intergers only')
+    guessed = False
 
-    while True:
-        input_num = int(input(number))
-        try:
-            low < input_num < high:
-            print('Cool, {} works'.format(input_num))
-            return input_num
-        except:
-            print('{input} is not between {low} and {high}'.format(input=input, low=low, high=high))
+    while guessed == False:
+        if int(num) < high and int(num) > low:
+             guessed = True
+        else:
+            num = not_number_rejector(input_number)
 
-    return input_num
+    return num
     
 
 
