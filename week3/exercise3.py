@@ -42,24 +42,24 @@ def advancedGuessingGame():
          # lower = int(lower)
          # upper = int(upper)
 
-      #actualNumber = random.randint(lower, upper)
+        actualNumber = random.randint(lower, upper)
 
       #guessed = False
 
-      while not guessed:
-        guessed_number = int(input('Number guess : '))
-        print('You have guessed {}').format(guessed_number)
-        actualNumber = random.randint(lower, upper)
-        if guessed_number == actualNumber:
+        while not guessed:
+          guessed_number = int(input('Number guess : '))
+          print('You have guessed {}').format(guessed_number)
+          actualNumber = random.randint(lower, upper)
+          if guessed_number == actualNumber:
           print('Well done! That is it!')
           guessed = True
-        elif guessed_number > upper or guessed_number < lower:
+          elif guessed_number > upper or guessed_number < lower:
           print('You fool! Know your bounds')
           guessed = False
-        elif guessed_number > actualNumber:
+          elif guessed_number > actualNumber:
           print ('Too high!')
           guessed = False
-        else guessed_number < actualNumber:
+          else guessed_number < actualNumber:
           print ('Too low!')
           guessed = False
         
