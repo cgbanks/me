@@ -101,11 +101,14 @@ def super_asker(low, high):
 
     while True:
         input_num = int(input(number))
-        if low < input_num < high:
+        try:
+            low < input_num < high:
             print('Cool, {} works'.format(input_num))
             return input_num
-        else:
+        except:
             print('{input} is not between {low} and {high}'.format(input=input, low=low, high=high))
+
+    return input_num
     
 
 
