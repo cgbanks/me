@@ -4,3 +4,5 @@ Exercise 1:
 
 use str() to convert num into string
 
+re use the defs from previous 
+

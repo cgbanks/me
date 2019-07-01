@@ -1,14 +1,39 @@
 """Week 3, Exercise 3.
-
 Steps on the way to making your own guessing game.
 """
 
 import random
 
+def not_number_rejector(message):
+    
+    is_none = False
+    is_num = True
+    num = input(message)
+
+# Check that the input is not NONE
+    while is_none == False:
+      if num == None:
+        print('Please input a number ')
+        num = input(message)
+      else:
+        is_num = False
+        is_none = True
+        
+
+    while is_num == False:
+        try:
+            int(num)
+            is_num = True
+        except Exception:
+            print('This is not a number, Please try again ')
+            num = input(message)
+        
+
+    return num
+
 
 def advancedGuessingGame():
     """Play a guessing game with a user.
-
     The exercise here is to rewrite the exampleGuessingGame() function
     from exercise 3, but to allow for:
     * a lower bound to be entered, e.g. guess numbers between 10 and 20
@@ -18,7 +43,6 @@ def advancedGuessingGame():
     * chastise them if they pick a number outside the bounds.
     * see if you can find the other failure modes.
       There are three that I can think of. (They are tested for.)
-
     NOTE: whilst you CAN write this from scratch, and it'd be good for you to
     be able to eventually, it'd be better to take the code from exercise 2 and
     merge it with code from excercise 1.
@@ -26,45 +50,55 @@ def advancedGuessingGame():
     purpose if you can!
     """
 
-    def randomgame():
+    print('Welcome to the guessing game !')
+    print('Lets start by picking the range for the number')
 
-      print('Welcome to the guessing game!')
-      print('Pick the bounds')
-      lower = input('Enter a lower bound : ')
-      upper = input('Enter a upper bound : ')
-      lower = int(lower)
-      upper = int(upper)
-      if lower or upper != int:
-        print('Interger only')
+    lower = not_number_rejector(str('Please pick the lower bound '))
+    
+    print('You enetered ' + str(lower))
+
+    upper = not_number_rejector(str('Please pick a number for the upper bound '))
+
+    small = False 
+    
+    while small == False:
+      if int(upper) > int(lower) + 1:
+        print('Cool')
+        small = True
       else:
-        print('Ok, you have chosen {lower} and {upper} as your bounds, guess a number'.format(lower, upper)
+        upper = not_number_rejector(str('Please select a numer higer than ' + str(int(lower) + 1) + ' '))
+    
+    print('Please guess a number between ' + str(lower) + ' and ' + str(upper))
 
-         # lower = int(lower)
-         # upper = int(upper)
+    guessed_num = not_number_rejector(str("Please guess a number between {} and {} ".format(lower, upper)))
 
-        actualNumber = random.randint(lower, upper)
+    bounds = False
+    
+    while bounds == False:
+      if int(guessed_num) > int(lower) and int(guessed_num) < int(upper):
+        bounds = True
+      else:
+        print ("Not inside the bounds")
+        guessed_num = not_number_rejector(str("Please guess a number between {} and {} ".format(lower, upper)))
+     
+    num_selected = random.randint(int(lower) +1 , int(upper) -1)
 
-      #guessed = False
+    is_correct = False
 
-        while not guessed:
-          guessed_number = int(input('Number guess : '))
-          print('You have guessed {}').format(guessed_number)
-          actualNumber = random.randint(lower, upper)
-          if guessed_number == actualNumber:
-          print('Well done! That is it!')
-          guessed = True
-          elif guessed_number > upper or guessed_number < lower:
-          print('You fool! Know your bounds')
-          guessed = False
-          elif guessed_number > actualNumber:
-          print ('Too high!')
-          guessed = False
-          else guessed_number < actualNumber:
-          print ('Too low!')
-          guessed = False
-        
-      return "You got it!"
+    while is_correct == False:
+      print('Your guess is {}'.format(guessed_num))
+      if int(guessed_num) == int(num_selected):
+        is_correct = True
+      elif int(guessed_num) < int(num_selected):
+        print('Sorry the number {} is too small'.format(guessed_num))
+        guessed_num = not_number_rejector(str("Please guess another number between {} and {} ".format(lower, upper)))
+      else:
+        print('Sorry the number {} is too big'.format(guessed_num))
+        guessed_num = not_number_rejector(str("Please guess another number between {} and {} ".format(lower, upper)))
 
+
+
+    return "You got it!"
     # the tests are looking for the exact string "You got it!". Don't modify that!
 
 
