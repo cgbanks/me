@@ -89,8 +89,8 @@ def wordy_pyramid():
     firstlist =[]
     secondlist =[]
     for i in range(minword,maxword+1):
-        newurl=url.format(len=i)
-        pull = requests.get(fullurl)   
+        newurl=url..format(len=i)
+        pull = requests.get(urllink)   
         if pull.status_code is 200:         
             random = pull.content  
             if random is None: 
