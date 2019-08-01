@@ -19,12 +19,11 @@ you'll need to figure out for yourself what to do.
 # return a list of countdown messages, much like in the bad function above.
 # It should say something different in the last message.
 def countdown(message, start, stop, completion_message):
-
-
+    countlist = []
     for i in range(int((start-stop)+1),0, -1):
         print(str(message) + " " + str(i))
     print(completion_message)
-    return None
+    return countlist
 
 
 # TRIANGLES
@@ -37,7 +36,7 @@ def countdown(message, start, stop, completion_message):
 # The stub functions are made for you, and each one is tested, so this should
 # hand hold quite nicely.
 def calculate_hypotenuse(base, height):
-    hypotenuse = ((height*height) + (base*base))**(1/2)
+    hypotenuse = ((base**2 + height**2)**(1/2))
     return(hypotenuse)
 
 
@@ -65,8 +64,8 @@ def calculate_aspect(base, height):
 # Don't reinvent the wheel
 def get_triangle_facts(base, height, units="mm"):
     return {
-        "area": calculate_area,
-        "perimeter": calculate_perimeter,
+        "area": calculate_area(base, height),
+        "perimeter": calculate_perimeter(base, height),
         "height": height,
         "base": base,
         "hypotenuse": calculate_hypotenuse(base, height),
@@ -150,31 +149,29 @@ def triangle_master(base, height, return_diagram=False, return_dictionary=False)
 def wordy_pyramid(api_key):
     import requests
 
-    baseURL = (
-        "http://api.wordnik.com/v4/words.json/randomWords?"
-        "api_key={api_key}"
-        "&minLength={length}"
-        "&maxLength={length}"
-        "&limit=1"
-    )
-    pyramid_list = []
-    for i in range(3, 21, 2):
-        url = baseURL.format(api_key="", length=i)
-        r = requests.get(url)
-        if r.status_code is 200:
-            message = r.json()[0]["word"]
-            pyramid_list.append(message)
-        else:
-            print("failed a request", r.status_code, i)
-    for i in range(20, 3, -2):
-        url = baseURL.format(api_key="", length=i)
-        r = requests.get(url)
-        if r.status_code is 200:
-            message = r.json()[0]["word"]
-            pyramid_list.append(message)
-        else:
-            print("failed a request", r.status_code, i)
-    return pyramid_list
+    urllink = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={len}"
+    minword = 3
+    maxword = 20
+    wordlist = []
+    firstlist =[]
+    secondlist =[]
+    for i in range(minword,maxword+1):
+        newurl=urllink.format(len=i)
+        pull = requests.get(newurl)   
+        if pull.status_code is 200:         
+            randomword = pull.content  
+            if randomword is None: 
+                pass
+            else:
+                randomword = str(randomword)
+                if int(i) % 2 ==0:
+                    secondlist.append(randomword[2:len(randomword)-1])    
+                else:
+                    firstlist.append(randomword[2:len(randomword)-1])
+    secondlist.reverse()
+    wordlist.extend(firstlist)
+    wordlist.extend(secondlist)
+    return wordlist  
 
 
 def get_a_word_of_length_n(length):
@@ -205,5 +202,5 @@ def list_of_words_with_lengths(list_of_lengths):
 
 
 if __name__ == "__main__":
-    do_bunch_of_bad_things()
+    #do_bunch_of_bad_things()
     wordy_pyramid("a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5")
