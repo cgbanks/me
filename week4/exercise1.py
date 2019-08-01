@@ -125,7 +125,7 @@ def pokedex(low=1, high=5):
     template = "https://pokeapi.co/api/v2/pokemon/{id}"
 
     height = 0
-    for i in range(low, high)
+    for i in range(low, high):
         url = template.format(base=template, id=5)
         r = requests.get(url)
         if r.status_code is 200:
