@@ -89,7 +89,7 @@ def wordy_pyramid():
     firstlist =[]
     secondlist =[]
     for i in range(minword,maxword+1):
-        newurl=url..format(len=i)
+        newurl=urllink.format(len=i)
         pull = requests.get(urllink)   
         if pull.status_code is 200:         
             random = pull.content  
@@ -133,9 +133,9 @@ def pokedex(low=1, high=5):
             heightest = the_json["height"]
             if heightest > height:
                 height = heightest
-                name1 = the_json["name"]
-                weight1 = the_json["weight"]
-                height1 = the_json["height"]
+                name = the_json["name"]
+                weight = the_json["weight"]
+                height = the_json["height"]
 
     return {"name": name, "weight": weight, "height": height}
 
