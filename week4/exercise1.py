@@ -42,8 +42,6 @@ def get_some_details():
     
     return {"lastName":last, "password":password, "postcodePlusID":idnumber }
 
-    data = json.loads(json_data)
-    return {"lastName": None, "password": None, "postcodePlusID": None}
 
 
 def wordy_pyramid():
