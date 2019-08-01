@@ -122,9 +122,9 @@ def tell_me_about_this_right_triangle(facts_dictionary):
         "This is a {aspect} triangle.\n"
     )
 
-    area=calculate_area
-    perimeter=calculate_perimeter
-    aspect=calculate_aspect
+    area = calculate_area
+    perimeter = calculate_perimeter
+    aspect = calculate_aspect
     if facts_dictionary["aspect"] == "tall":
         diagram = tall.format(**facts_dictionary)
     elif facts_dictionary["aspect"] == "wide":
@@ -192,7 +192,7 @@ def get_a_word_of_length_n(length):
 
 def list_of_words_with_lengths(list_of_lengths):
     import requests
-    listoflengthy = []
+    listlength = []
     baseURL = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={lengthy}"
     for j in list_of_lengths:
         url = baseURL.format(lengthy=j)
@@ -200,8 +200,8 @@ def list_of_words_with_lengths(list_of_lengths):
         if r.status_code is 200:
             gottedword = str(r.content)
             returning = gottedword[2:len(gottedword)-1]
-        listoflengthy.append(returning)
-    return listoflengthy
+        listlength.append(returning)
+    return listlength
 
 
 if __name__ == "__main__":
