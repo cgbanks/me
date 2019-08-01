@@ -1,1 +1,7 @@
-TODO: Reflect on what you learned this week and what is still unclear.
+Revise before examine 
+
+understand pull requests,
+
+can't get tests to run, even with downloading 'requests'
+
+error message
