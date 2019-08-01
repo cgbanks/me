@@ -16,40 +16,15 @@ you'll need to figure out for yourself what to do.
 """
 
 
-# This is a terrible function. The rest of the functions in this file do a
-# much better job of what it's trying to do. Once you've has a little look,
-# move on, and eventually delete this function. (And this comment!)
-def do_bunch_of_bad_things():
-    print("Getting ready to start in 9")
-    print("Getting ready to start in 8")
-    print("Getting ready to start in 7")
-    print("Getting ready to start in 6")
-    print("Getting ready to start in 5")
-    print("Getting ready to start in 4")
-    print("Getting ready to start in 3")
-    print("Getting ready to start in 2")
-    print("Getting ready to start in 1")
-    print("Let's go!")
-
-    triangle = {"base": 3, "height": 4}
-    triangle["hypotenuse"] = triangle["base"] ** 2 + triangle["height"] ** 2
-    print("area = " + str((triangle["base"] * triangle["height"]) / 2))
-    print("side lengths are:")
-    print("base: {}".format(triangle["base"]))
-    print("height: {}".format(triangle["height"]))
-    print("hypotenuse: {}".format(triangle["hypotenuse"]))
-
-    another_hyp = 5 ** 2 + 6 ** 2
-    print(another_hyp)
-
-    yet_another_hyp = 40 ** 2 + 30 ** 2
-    print(yet_another_hyp)
-
-
 # return a list of countdown messages, much like in the bad function above.
 # It should say something different in the last message.
 def countdown(message, start, stop, completion_message):
-    pass
+
+
+    for i in range(int((start-stop)+1),0, -1):
+        print(str(message) + " " + str(i))
+    print(completion_message)
+    return None
 
 
 # TRIANGLES
@@ -62,32 +37,41 @@ def countdown(message, start, stop, completion_message):
 # The stub functions are made for you, and each one is tested, so this should
 # hand hold quite nicely.
 def calculate_hypotenuse(base, height):
-    pass
+    hypotenuse = ((height*height) + (base*base))**(1/2)
+    return(hypotenuse)
 
 
 def calculate_area(base, height):
-    pass
-
+    area = ((height*base)/2)
+    return(area)
 
 def calculate_perimeter(base, height):
-    pass
+    perimeter = (base*base + height*height)**(1/2) + height + base
+    return(perimeter)
 
 
 def calculate_aspect(base, height):
-    pass
+    aspect = ""
+    if height > base:
+        aspect = "tall"
+    elif base > height:
+        aspect = "wide"
+    else:
+        aspect = "equal"
+    return aspect
 
 
 # Make sure you reuse the functions you've already got
 # Don't reinvent the wheel
 def get_triangle_facts(base, height, units="mm"):
     return {
-        "area": None,
-        "perimeter": None,
-        "height": None,
-        "base": None,
-        "hypotenuse": None,
-        "aspect": None,
-        "units": None,
+        "area": calculate_area,
+        "perimeter": calculate_perimeter,
+        "height": height,
+        "base": base,
+        "hypotenuse": calculate_hypotenuse(base, height),
+        "aspect": calculate_aspect(base, height),
+        "units": units,
     }
 
 
@@ -138,16 +122,27 @@ def tell_me_about_this_right_triangle(facts_dictionary):
         "This is a {aspect} triangle.\n"
     )
 
+    area=calculate_area
+    perimeter=calculate_perimeter
+    aspect=calculate_aspect
+    if facts_dictionary["aspect"] == "tall":
+        diagram = tall.format(**facts_dictionary)
+    elif facts_dictionary["aspect"] == "wide":
+        diagram = wide.format(**facts_dictionary)
+    else:
+        diagram = equal.format(**facts_dictionary)
     facts = pattern.format(**facts_dictionary)
-
+    return( diagram + "\n" + facts)
 
 def triangle_master(base, height, return_diagram=False, return_dictionary=False):
+    fax=get_triangle_facts(base, height)
+    rightangle=tell_me_about_this_right_triangle(fax)
     if return_diagram and return_dictionary:
-        return None
+        return {"diagram": rightangle, "facts":fax}
     elif return_diagram:
-        return None
+        return rightangle
     elif return_dictionary:
-        return None
+        return fax
     else:
         print("You're an odd one, you don't want anything!")
 
@@ -183,11 +178,30 @@ def wordy_pyramid(api_key):
 
 
 def get_a_word_of_length_n(length):
-    pass
-
+    import requests
+    baseURL = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={lengthy}"
+    if type(length) == int and length >=3:
+        actualurl = baseURL.format(lengthy=length)
+        r = requests.get(actualurl)
+        if r.status_code is 200:
+            grabbedword = str(r.content)
+            returning = grabbedword[2:len(grabbedword)-1]
+        return returning
+    else:
+        return None
 
 def list_of_words_with_lengths(list_of_lengths):
-    pass
+    import requests
+    listoflengthy = []
+    baseURL = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={lengthy}"
+    for j in list_of_lengths:
+        url = baseURL.format(lengthy=j)
+        r = requests.get(url)
+        if r.status_code is 200:
+            gottedword = str(r.content)
+            returning = gottedword[2:len(gottedword)-1]
+        listoflengthy.append(returning)
+    return listoflengthy
 
 
 if __name__ == "__main__":
