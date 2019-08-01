@@ -36,11 +36,11 @@ def get_some_details():
     json_data = open(LOCAL + "/lazyduck.json").read()
 
     data = json.loads(json_data)
-    last = data["results"][0]["name"]["last"]
+    lastName = data["results"][0]["name"]["last"]
     password = data["results"][0]["login"]["password"]
     idnumber = int(data["results"][0]["location"]["postcode"])+ int(data["results"][0]["id"]["value"])
     
-    return {"lastName":last, "password":password, "postcodePlusID":idnumber }
+    return {"lastName":lastName, "password":password, "postcodePlusID":idnumber }
 
 
 
@@ -88,17 +88,17 @@ def wordy_pyramid():
     secondlist =[]
     for i in range(minword,maxword+1):
         newurl=urllink.format(len=i)
-        pull = requests.get(urllink)   
+        pull = requests.get(newurl)   
         if pull.status_code is 200:         
-            random = pull.content  
-            if random is None: 
+            randomword = pull.content  
+            if randomword is None: 
                 pass
             else:
-                random = str(random)
+                randomword = str(randomword)
                 if int(i) % 2 ==0:
-                    secondlist.append(random[2:len(random)-1])    
+                    secondlist.append(randomword[2:len(randomword)-1])    
                 else:
-                    firstlist.append(random[2:len(random)-1])
+                    firstlist.append(randomword[2:len(randomword)-1])
     secondlist.reverse()
     wordlist.extend(firstlist)
     wordlist.extend(secondlist)
@@ -122,15 +122,15 @@ def pokedex(low=1, high=5):
     """
     template = "https://pokeapi.co/api/v2/pokemon/{id}"
 
-    height = 0
+    tall = 0
     for i in range(low, high):
-        url = template.format(base=template, id=5)
+        url = template.format(base=template, id=i)
         r = requests.get(url)
         if r.status_code is 200:
             the_json = json.loads(r.text)
             heightest = the_json["height"]
-            if heightest > height:
-                height = heightest
+            if tallnew > tall:
+                tall = tallnew
                 name = the_json["name"]
                 weight = the_json["weight"]
                 height = the_json["height"]
@@ -153,9 +153,9 @@ def diarist():
     TIP: this might come in handy if you need to hack a 3d print file in the future.
     """
 
-    laser_data = open(LOCAL + "/Trispokedovetiles(laser).gcode").readlines()
+    gcode_data = open(LOCAL + "/Trispokedovetiles(laser).gcode").readlines()
     number = 0
-    for cactusLine in laser_data:
+    for cactusLine in gcode_data:
         print(cactusLine)
         if "M10 P1" in cactusLine:
             number += 1
