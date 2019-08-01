@@ -128,7 +128,7 @@ def pokedex(low=1, high=5):
         r = requests.get(url)
         if r.status_code is 200:
             the_json = json.loads(r.text)
-            heightest = the_json["height"]
+            tallnew = the_json["height"]
             if tallnew > tall:
                 tall = tallnew
                 name = the_json["name"]
