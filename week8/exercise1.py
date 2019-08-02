@@ -46,18 +46,19 @@ def fizz_buzz():
     Return a list that has an integer if the number isn't special, and a string
     if it is. E.g. [1, 2, "Fizz", 4, "Buzz", "Fizz", 7, ...]
     """
-    fizzBuzzList = []
-    for fizzy in range(0, 99):
-        num = ''
-        if i % 3 and i % 5 == 0:
-            num = 'FizzBuzz'
-        if i % 3 == 0:
-            num = 'Fizz'
-        if i % 5 == 0:
-            num = 'Buzz'
-        print(num, end=' ')
+    fizzlist = []
+    for num in range(1,101):
+        if num % 3 is 0 and num % 5 is 0:
+            fizzlist.append('FizzBuzz')
+        elif num % 3 is 0:
+            fizzlist.append('Fizz')
+        elif num % 5 is 0:      
+            fizzlist.append('Buzz')
+        else:      
+            fizzlist.append(num)
 
-    return
+    return fizzlist
+
 
 
 def put_behind_bars(input_string="very naughty boy"):
@@ -73,9 +74,9 @@ def put_behind_bars(input_string="very naughty boy"):
     words = '|' + input_string[0]
     for i in input_string[1:]:
          words += '|' + i
-         words.append('|')
+    newwords = words + '|'
 
-    return words
+    return newwords
 
 
 def pet_filter(letter="a"):
@@ -91,12 +92,16 @@ def pet_filter(letter="a"):
             "siamese fighting fish","fancy rat and lab rat","mink","red fox",
             "hedgehog","guppy",]
     # fmt: on
+    petlist = []
+    petslist = False
+    for letter in pets:
+        if letter in pets:
+            petlist = True
+        else:
+            petlist = False
+            break
 
-    newpets = []
-    if letter in pets:
-        print(newpets)
-
-    return newpets
+    return petlist
 
 
 def best_letter_for_pets():
@@ -137,6 +142,14 @@ def make_filler_text_dictionary():
     """
 
     import requests
+
+
+    urllink = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={len}"
+    minword = {len}
+    maxword = {len}
+
+    for i in range (3,8):
+        print()
 
     return {}
 
