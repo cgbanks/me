@@ -93,16 +93,10 @@ def pet_filter(letter="a"):
             "hedgehog","guppy",]
     # fmt: on
     petlist = []
-    petslist = False
-    for letter in pets:
-        if letter in pets:
-            petlist = True
-        else:
-            petlist = False
-            break
-        
-    if True:
-        print(petslist)
+
+    for pets in pets:
+        if  str(letter) in pets:
+            petlist.append(pets)
 
     return petlist
 
