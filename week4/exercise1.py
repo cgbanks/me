@@ -154,13 +154,13 @@ def diarist():
     """
 
     gcode_data = open(LOCAL + "/Trispokedovetiles(laser).gcode").readlines()
-    number = 0
+    number_of_times = 0
     for cactusLine in gcode_data:
         print(cactusLine)
         if "M10 P1" in cactusLine:
-            number += 1
+            number_of_times += 1
     f = open("lasers.pew", "w")
-    f.write(str(number))
+    f.write(str(number_of_times))
     f.close
 
 

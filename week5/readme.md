@@ -4,4 +4,4 @@ Still needs work
 
 look into requests
 
-scat = 4.(test_)
+api key issues figure out

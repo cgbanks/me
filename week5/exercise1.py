@@ -149,6 +149,7 @@ def triangle_master(base, height, return_diagram=False, return_dictionary=False)
 def wordy_pyramid(api_key):
     import requests
 
+    
     urllink = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={len}"
     minword = 3
     maxword = 20
