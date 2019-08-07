@@ -145,7 +145,6 @@ def triangle_master(base, height, return_diagram=False, return_dictionary=False)
     else:
         print("You're an odd one, you don't want anything!")
 
-
 def wordy_pyramid(api_key):
     import requests
 
@@ -173,6 +172,7 @@ def wordy_pyramid(api_key):
     wordlist.extend(firstlist)
     wordlist.extend(secondlist)
     return wordlist  
+
 
 
 def get_a_word_of_length_n(length):
